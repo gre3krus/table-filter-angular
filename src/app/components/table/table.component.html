@@ -1,0 +1,32 @@
+<div class="container">
+
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Поиск по фамилии">
+  <table>
+    <thead>
+      <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data | filterByFirstName:searchQuery">
+        <td>{{ item.first_name }}</td>
+        <td>{{ item.second_name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>
+          <button (click)="removeItem(item.first_name)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <h2>Добавить нового пользователя:</h2>
+    <input type="text" [(ngModel)]="newUser.first_name" placeholder="Фамилия">
+    <input type="text" [(ngModel)]="newUser.second_name" placeholder="Имя">
+    <input type="text" [(ngModel)]="newUser.last_name" placeholder="Отчество">
+    <button (click)="addNew()">Добавить</button>
+  </div>
+
+</div>
